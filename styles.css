@@ -1,0 +1,370 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #FF0000; /* Red */
+    color: #FFD700; /* Yellow */
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+h1 {
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: 25px;
+    margin: 0 5px;
+}
+
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-img {
+    width: 30px;
+    height: auto;
+}
+
+#cart-count {
+    background-color: #FFD700;
+    color: #FF0000;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+}
+
+.cart-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1001;
+    color: black;
+    font-size: 14px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.cart-dropdown ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-dropdown li {
+    margin-bottom: 5px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.qty-btn {
+    background-color: #FFD700;
+    color: #FF0000;
+    border: none;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+#cart-total {
+    color: black;
+    font-weight: bold;
+}
+
+#place-order {
+    background-color: #FF0000;
+    color: #FFD700;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.banner {
+    margin-top: 70px; /* Header height */
+    overflow: hidden;
+    position: relative;
+    height: 300px;
+}
+
+.carousel img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel img.active {
+    opacity: 1;
+}
+
+.info {
+    text-align: center;
+    padding: 20px;
+    background-color: #FFD700;
+    color: #FF0000;
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+.category {
+    margin-bottom: 40px;
+}
+
+.category h2 {
+    color: #FF0000;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 10px;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 10px;
+    text-align: center;
+}
+
+.card-content h3 {
+    margin: 10px 0;
+    color: #FF0000;
+}
+
+.card-content .desc {
+    font-size: 12px;
+    color: #666; /* Dark grey */
+    margin: 5px 0;
+}
+
+.card-content .prices {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.add-btn {
+    background-color: #FFD700;
+    color: #FF0000;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #FF0000;
+    color: #FFD700;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1002;
+    left: 0;
+    top: 70px;
+    width: 100%;
+    height: calc(100% - 70px);
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+#size, #qty {
+    margin: 10px 0;
+    padding: 5px;
+    width: 100%;
+}
+
+#add-to-cart {
+    background-color: #FF0000;
+    color: #FFD700;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.notification {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: #FFD700;
+    color: #FF0000;
+    padding: 10px;
+    border-radius: 5px;
+    animation: fadeOut 3s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+footer {
+    background-color: #FF0000;
+    color: #FFD700;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.icon {
+    width: 30px;
+    margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .social-icons {
+        order: 3;
+        margin: 5px 0;
+    }
+    .cart-icon {
+        order: 4;
+    }
+    .banner {
+        height: 200px;
+    }
+    .carousel img {
+        height: 200px;
+    }
+    .items {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    .card img {
+        height: 150px;
+    }
+    .card-content h3 {
+        font-size: 14px;
+    }
+    .card-content .desc {
+        font-size: 10px;
+    }
+    .card-content .prices {
+        font-size: 12px;
+    }
+    .modal-content {
+        width: 90%;
+    }
+    .cart-dropdown {
+        width: 90vw;
+        max-width: none;
+        right: 5vw;
+        left: auto;
+        padding: 15px;
+        font-size: 16px; /* Larger for readability */
+    }
+    .cart-dropdown li {
+        font-size: 16px;
+    }
+    #cart-total {
+        font-size: 16px;
+    }
+}
